@@ -22,7 +22,7 @@ spec:
       - name: regcred
       containers:
         - name: address2map-fe
-          image: scholtz2/address2mapfe:1.0.0-stable
+          image: scholtz2/address2mapfe:1.2022.10.08
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
