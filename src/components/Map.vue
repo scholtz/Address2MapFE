@@ -9,13 +9,10 @@
       v-for="pointer in pointers"
       :key="pointer.title"
       :options="{
-        position: {
-          lat: pointer.lat,
-          lng: pointer.lng,
-        },
+        position: { lat: pointer.lat, lng: pointer.lng },
+        icon: pointer.icon,
       }"
     />
-    <Button @click="tmpClick"></Button>
   </GoogleMap>
 </template>
 
@@ -48,16 +45,12 @@ export default defineComponent({
         lat: dt.lat,
         lng: dt.lng,
         title: dt.address,
+        icon: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png",
       } as IPointer;
       return point;
     });
     return { center, pointers };
   },
   watch: {},
-  methods: {
-    tmpClick() {
-      console.log(this);
-    },
-  },
 });
 </script>

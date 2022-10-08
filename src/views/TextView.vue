@@ -97,7 +97,12 @@ export default defineComponent({
       />
     </div>
     <div v-else class="m-2 flex-grow-1 flex flex-column">
-      <Button @click="showMapClick">Show on the map</Button>
+      <Button
+        v-if="!showMap"
+        class="p-button-success mb-2"
+        @click="showMapClick"
+        >Your text is filled in correctly. Show it on the map</Button
+      >
       <Map v-if="showMap" :datapoints="dataPoints"></Map>
     </div>
   </div>
