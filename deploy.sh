@@ -1,3 +1,4 @@
+cd ../gh-pages/
 git pull || error_code=$?
 error_code_int=$(($error_code + 0))
 
@@ -6,12 +7,23 @@ if [ $error_code_int -ne 0 ]; then
 	exit 1;
 fi
 
-exit;
-./build.sh || error_code=$?
+cd ../gh-pages/
+
+git pull || error_code=$?
 error_code_int=$(($error_code + 0))
 
 if [ $error_code_int -ne 0 ]; then
-    echo "./build.sh failed";
+    echo "git pull failed";
+	exit 1;
+fi
+
+cd ../Address2MapFE/docker/
+
+./compose.prod.sh || error_code=$?
+error_code_int=$(($error_code + 0))
+
+if [ $error_code_int -ne 0 ]; then
+    echo "./compose.prod.sh failed";
 	exit 1;
 fi
 cd ../k8s
@@ -24,7 +36,7 @@ if [ $error_code_int -ne 0 ]; then
 	exit 1;
 fi
 
-kubectl rollout restart deployment address2map-web-deployment -n address2map || error_code=$?
+kubectl rollout restart deployment address2map-fe-deployment -n address2map || error_code=$?
 error_code_int=$(($error_code + 0))
 
 if [ $error_code_int -ne 0 ]; then

@@ -6,7 +6,7 @@ RUN apt update && apt dist-upgrade -y && apt install -y mc wget telnet dnsutils 
 RUN mkdir /app
 WORKDIR /app
 
-COPY . /app
-COPY docker/cmd.sh /cmd.sh
+COPY gh-pages /app
+COPY Address2MapFE/docker/cmd.sh /cmd.sh
 RUN chmod 0700 /cmd.sh
-COPY docker/default.conf /etc/nginx/sites-available/default.conf
+COPY Address2MapFE/docker/default.conf /etc/nginx/sites-available/default.conf
