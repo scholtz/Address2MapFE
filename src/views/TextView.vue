@@ -17,7 +17,7 @@ export default defineComponent({
       language: "text",
       prevEmpty: "",
       loaded: false,
-      prev: `Základní škola Brána jazyků s rozšířenou výukou matematiky 
+      prev: `!Základní škola Brána jazyků s rozšířenou výukou matematiky 
 !sídlo: Praha 1, Uhelný trh 4/425 
 28. října 
 Alšovo nábřeží           
@@ -98,7 +98,7 @@ Zlatá
 Žatecká - č. 1 – 4, 6 
 Železná 
 
-Základní škola náměstí Curieových   
+!Základní škola náměstí Curieových   
 !sídlo: Praha 1, náměstí Curieových 2/886 
 17. listopadu 
 Anežská                                                        
