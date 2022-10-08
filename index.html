@@ -5,6 +5,78 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Address2Map app</title>
+    <script
+      id="mojeid-connect-script"
+      src="https://www.mojeid.cz/public/media/1542958574/150/"
+      data-jsrsasign="https://www.mojeid.cz/public/media/1542956522/149/"
+    ></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        function parseClaims(clientClaims) {
+          var claims = {};
+          for (var name in clientClaims) {
+            claims[clientClaims[name][0]] = {
+              essential: clientClaims[name][1],
+            };
+          }
+          return claims;
+        }
+
+        function fillForm(uiDict) {
+          for (var field_name in uiDict) {
+            var nodes = document.querySelectorAll(
+              "input[name=" +
+                field_name +
+                "], " +
+                "select[name=" +
+                field_name +
+                "], " +
+                "textarea[name=" +
+                field_name +
+                "]"
+            );
+            if (nodes.length) {
+              this.setValueToElements(
+                nodes,
+                this.decodeValue(uiDict[field_name])
+              );
+            }
+          }
+        }
+
+        var mojeID = createMojeidConnect({
+          clientName: "Address2Map",
+          parseClaimsCallback: parseClaims,
+          formCallback: fillForm,
+          claims: [
+            ["given_name", true],
+            ["family_name", true],
+            ["email", true],
+            ["phone_number", true],
+            ["nickname", false],
+            ["address", false],
+            ["birthdate", false],
+            ["gender", false],
+            ["website", false],
+            ["profile", false],
+          ],
+          registrationSuccessCallback: function () {
+            document
+              .getElementById("button-prefill")
+              .removeAttribute("disabled");
+            document.getElementsByClassName("error-message")[0].textContent =
+              "";
+          },
+          registrationFailureCallback: function () {
+            document.getElementsByClassName("error-message")[0].textContent =
+              "Registrace klienta se nezdařila.";
+          },
+        });
+        document
+          .getElementById("button-prefill")
+          .addEventListener("click", mojeID.requestAuthentication.bind(mojeID));
+      });
+    </script>
     <link
       href="https://unpkg.com/primevue/resources/themes/mdc-dark-indigo/theme.css"
       rel="stylesheet"
@@ -18,11 +90,16 @@
       rel="stylesheet"
       href="https://unpkg.com/primeflex@3.1.2/primeflex.css"
     />
-    <script type="module" crossorigin src="/assets/index.5ee66e31.js"></script>
+    <script type="module" crossorigin src="/assets/index.3ee11e0c.js"></script>
     <link rel="stylesheet" href="/assets/index.25933686.css">
   </head>
   <body class="flex-grow-1 flex flex flex-column flex-auto">
     <div id="app" class="flex-grow-1 flex flex-column flex-auto"></div>
     
+
+    <div class="button-frame">
+      <button id="button-prefill" disabled>Předvyplnit pomocí mojeID</button>
+      <p class="error-message">Probíhá registrace klienta...</p>
+    </div>
   </body>
 </html>
