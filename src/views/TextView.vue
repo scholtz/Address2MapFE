@@ -5,6 +5,7 @@ import { defineComponent } from "vue";
 
 import Map from "../components/Map.vue";
 import type IDataPoint from "@/interface/IDataPoint";
+import type ITextResponse from "@/interface/ITextResponse";
 
 export default defineComponent({
   components: { Map },
