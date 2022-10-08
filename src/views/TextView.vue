@@ -122,13 +122,12 @@ Kostečná
 Kozí 
 Králodvorská 
 Maiselova 
-Malá Klášterní 
 Malá Štupartská 
 Masná 
 Na Františku 
 Na Rejdišti 
 náměstí Curieových
-náměstí Franze Kafky 
+Nám. Franze Kafky
 náměstí Jana Palacha 
 náměstí Republiky – č. p. 1081, 660, 1090 
 Pařížská 
