@@ -1,4 +1,4 @@
-import IDataPoint from "./IDataPoint";
+import type IDataPoint from "./IDataPoint";
 
 type IIDataPoint = IDataPoint[];
 export default IIDataPoint;
