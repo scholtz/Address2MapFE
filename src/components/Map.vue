@@ -116,6 +116,8 @@ export default defineComponent({
       markerIndex++;
       for (const index in arr) {
         const dataPoint = arr[index];
+        if (!dataPoint.lat) continue;
+        if (!dataPoint.lng) continue;
         pointers.push({
           lat: dataPoint.lat,
           lng: dataPoint.lng,
