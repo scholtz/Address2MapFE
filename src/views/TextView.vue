@@ -4,7 +4,7 @@ import axios from "axios";
 import { defineComponent } from "vue";
 
 import Map from "../components/Map.vue";
-import type IDataPoint from "@/interface/IDataPoint";
+import type IIDataPoint from "@/interface/IIDataPoint";
 import type ITextResponse from "@/interface/ITextResponse";
 
 export default defineComponent({
@@ -158,7 +158,7 @@ Za Haštalem
       current: "" as string,
       notes: "" as string,
       folding: true,
-      dataPoints: [] as IDataPoint[],
+      dataPoints: [] as IIDataPoint[],
     };
   },
   watch: {
@@ -197,7 +197,7 @@ Za Haštalem
       );
       if (result.status == 200) {
         console.log("result.data", result.data);
-        const data = JSON.parse(JSON.stringify(result.data)) as IDataPoint[];
+        const data = JSON.parse(JSON.stringify(result.data)) as IIDataPoint[];
 
         if (data) {
           console.log("data", data);
